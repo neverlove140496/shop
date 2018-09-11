@@ -10,7 +10,7 @@
 	{
 		protected $table = 'orders';
 		protected $fillable = [
-			'user_id','payment','ship','status','created_at','updated_at'];
+			'user_id','payment','ship','address','note','status','created_at','updated_at'];
 	
 		public function total_amount()
 		{
@@ -23,6 +23,11 @@
 		{
 			return $this->hasMany('\App\Models\Order_detail','order_id','id');
 
+		}
+		//
+		public function User1()
+		{
+			return $this->hasOne('\App\Models\User','id','user_id');
 		}
 		
 	}

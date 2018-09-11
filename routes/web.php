@@ -28,14 +28,17 @@ Route::group(['prefix' => '','namespace' => 'Home'],function()
 	Route::get('/cart.html','HomeController@get_cart')->name('cart');
 //ROUTE CHECKOUT
 	Route::get('/checkout.html','HomeController@get_checkout')->name('checkout');
-//ROUTE PROFILE USERS
-	Route::get('/profile.html','HomeController@get_profile')->name('profile');
+
 //ROUTE VIEW PRODUCTS
 	Route::get('//{slug}.html','HomeController@view')->name('view');
 //ROUTE SEARCH PRODUCTS
 	Route::get('/search','HomeController@get_search')->name('search');
-	
+//ROUTE 
+	Route::get('/shop/{id}','HomeController@get_shop')->name('shop');
 
+//ROUTE COMMENT
+	
+	Route::post('/comment/{id}','CommentController@post_comment')->name('comment');
 
 //ROUTE ADD, DELETE, UPDATE, CLEAR THE CART 
 	Route::get('/cart/add-cart/{id}.html','HomeController@add_cart')->name('add-cart');
@@ -55,8 +58,12 @@ Route::group(['prefix' => '','namespace' => 'Home'],function()
 //ROUTE LOGOUT USERS
 	Route::get('/home/dangxuat.html','Home\AuthController@get_dangxuat')->name('dangxuat');
 //ROUTE CHANGE PASSWORD
-	Route::get('/home/change.html','Home\AuthController@get_change')->name('change');
-	Route::post('/home/change.html','Home\AuthController@post_change')->name('change');
+	Route::get('/home/change-password.html','Home\AuthController@get_change')->name('change-password');
+	Route::post('/home/change-password.html','Home\AuthController@post_change')->name('change-password');
+//ROUTE PROFILE USERS
+	Route::get('/home/profile.html','Home\ProfileController@get_profile')->name('profile');
+	Route::post('/home/profile.html','Home\ProfileController@post_profile')->name('profile');
+	
 
 
 Route::group(['prefix' => 'admin','namespace' => 'Admin','middleware'=>'admin'],function()
@@ -78,6 +85,7 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin','middleware'=>'admin'],
 //ROUTE PROFILE ADMIN
 	include'admin/hoso.php';
 //ROUTE ĐƠN HÀNG
+	//include'admin/donhang.php';
 
 
 });
@@ -99,9 +107,22 @@ Route::group(['prefix' => 'order','namespace' => 'Home'],function()
 ////
 	Route::get('/history.html','OrderController@order_history')->name('order_history');
 	Route::get('/detail/{id}.html','OrderController@Order_detail')->name('order_detail');
-
+	
 	Route::get('/order-success.html','OrderController@success')->name('order-success');
 	Route::get('/order-error.html','OrderController@error')->name('order-error');
 
+});
+
+//ROUTE ORDER Admin
+Route::group(['prefix' => 'admin/donhang','namespace' => 'Admin'],function()
+{
+	Route::get('/donhang.html','DonhangController@donhang')->name('donhang');
+	Route::post('/donhang.html','DonhangController@post_donhang')->name('donhang');
+////
+	Route::get('/history.html','DonhangController@donhang_history')->name('donhang_history');
+	Route::get('/detail/{id}.html','DonhangController@donhang_detail')->name('donhang_detail');
+
+	Route::get('delete-donhang/{id}.html','DonhangController@get_delete')->name('delete-donhang');
+	Route::post('delete-donhang/{id}.html','DonhangController@post_delete')->name('delete-donhang');		
 });
 

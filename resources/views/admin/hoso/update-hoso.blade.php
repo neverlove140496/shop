@@ -98,7 +98,7 @@
 		@endif		
 		{{ csrf_field() }}
 		<div class="clearfix"></div>
-		<button type="submit" class="btn btn-success">Thêm</button>
+		<button type="submit" class="btn btn-success">Cập nhật</button>
 	</form>
 	</div>
 </div>

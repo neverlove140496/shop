@@ -9,15 +9,23 @@
             <div class="ps-column"><a class="ps-offer" href="product-listing.html"><img src="{{url('public')}}/home/images/banner/banner-1.jpg" alt=""></a></div>
             <div class="ps-column"><a class="ps-offer" href="product-listing.html"><img src="{{url('public')}}/home/images/banner/banner-2.jpg" alt=""></a></div>
           </div>
+
           <div class="ps-product-action">
-            <div class="ps-product__filter">
-              <select class="ps-select selectpicker">
-                <option value="">Shortby</option>
-                
-                <option value="3">Price (Low to High)</option>
-                <option value="3">Price (High to Low)</option>
-              </select>
-            </div>
+            
+            <form action="" method="GET" class="form-inline" role="form">
+              <div  name="ordering" class="form-group" class="ps-product__filter">
+                  <select class="ps-select selectpicker">
+                   
+                    <option value="name-asc">Name(ASC)</option>
+                    <option value="name-desc">Name(DESC)</option>
+                    <option value="price-asc">Price (Low to High)</option>
+                    <option value="price-desc">Price (High to Low)</option>
+                  </select>   
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          
+
             <div class="ps-pagination">
               <ul class="pagination">
                 <li><a href="#"><i class="fa fa-angle-left"></i></a></li>

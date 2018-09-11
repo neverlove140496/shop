@@ -1,12 +1,12 @@
-@extends('layouts.index')
+@extends('layouts.login')
 @section('title', 'Đăng ký tài khoản')
 @section('main')
-			<div class="col-md-6 col-md-offset-3">
+			
 				<form action="" method="POST" role="form">
-					<label for="">Đăng ký Tài khoản</label>
+					<label for=""><h4>Đăng ký tài khoản Admin</h4></label>
 					<div class="form-group">
-						<label for="">họ và tên</label>
-						<input type="text" class="form-control" name="name" placeholder="name">
+						<label for="">Họ và tên</label>
+						<input type="text" class="form-control" name="name" placeholder="Họ và tên" value="{{old('name')}}">
 					</div>
 
 					@if($errors->has('name'))
@@ -16,7 +16,7 @@
 					@endif
 					<div class="form-group">
 						<label for="">Email</label>
-						<input type="text" class="form-control" name="email" placeholder="Email">
+						<input type="text" class="form-control" name="email" placeholder="Địa chỉ email" value="{{old('email')}}">
 					</div>
 
 					@if($errors->has('email'))
@@ -26,7 +26,7 @@
 					@endif
 					<div class="form-group">
 						<label for="">Mật khẩu</label>
-						<input type="password" class="form-control" name="password" placeholder="Mật khẩu">
+						<input type="password" class="form-control" name="password" placeholder="Mật khẩu" value="{{old('password')}}">
 					</div>
 					@if($errors->has('password'))
 						<div class="help-block">
@@ -35,7 +35,7 @@
 					@endif
 					<div class="form-group">
 						<label for="">Nhập lại Mật khẩu</label>
-						<input type="password" class="form-control" name="comfirm_password" placeholder="Mật khẩu">
+						<input type="password" class="form-control" name="comfirm_password" placeholder="Nhập lại mật khẩu" value="{{old('comfirm_password')}}">
 					</div>
 					@if($errors->has('comfirm_password'))
 						<div class="help-block">
@@ -46,5 +46,8 @@
 					{{ csrf_field() }}
 					<button type="submit" class="btn btn-primary">Đăng ký</button>
 				</form>
-			</div>
+				<br/>
+				<p>
+				<a href="{{route('home')}}" class="label  label-success">Homepage</a> 
+				</p>		
 @stop()

@@ -21,6 +21,4 @@ class User extends Authenticatable
         'gender','birthday','level','remember_token','created_at','updated_at',
     ];
 
-
-
 }

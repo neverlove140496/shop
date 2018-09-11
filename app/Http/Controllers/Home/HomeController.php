@@ -17,9 +17,9 @@
 
 				View::share(
 				[		
-        			'cart' => new Cart(),
-        			'blog'=>Blog::paginate(5),	
-		  	 	 ]);
+        			'cart' => new Cart(),	
+        			 'blog' => Blog::all(),
+		  	 	]);
 
 				return $next($request);
 			});
@@ -52,6 +52,20 @@
 			return view('home.profile');
 		}
 		
+		//shop id\
+		public function get_shop($id, Request $req)
+		{
+			$products= Product::where('category_id',$id);
+			if($req->ordering){
+				echo $req->ordering;
+			}
+			$products=$products->paginate(8);
+			return view('home.shop',[
+				'products' => $products
+			]);
+		}
+
+
 		//hien thi san pham
 		
 		public function view($slug)
@@ -72,13 +86,17 @@
 			}
 		}
 		
-		public function add_cart($id, Cart $cart)
+		public function add_cart($id, Cart $cart,Request $req)
 		{
+			
 			$model=Product::find($id);
+
+			// $req->merge();
+			// dd($req->all());
 
 			if($model)
 			{
-				 //them vao session
+				//them vao session
 				$cart->add($model);
 				return redirect()->route('view-cart')->with('success','Thêm thành công!');
 			}
@@ -86,7 +104,7 @@
 				return view('error.404');
 			}
 		}
-
+		
 		public function view_cart(Request $req)
 		{	
 			
@@ -128,7 +146,8 @@
 			$product=Product::where('name','like','%'.$req->search.'%')->get();
 			return view('home.search',['product'=>$product]);
 		}
-			
+		
+		//thông tin tài khoản	
 
 	}
 ?>

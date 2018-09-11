@@ -2,6 +2,18 @@
 @section('title','Home')
 @section('main')
 
+            <form action="" method="GET" class="form-inline" role="form">
+              <div  name="ordering" class="form-group" class="ps-product__filter">
+                  <select class="ps-select selectpicker">
+                   
+                    <option value="name-asc">Name(ASC)</option>
+                    <option value="name-desc">Name(DESC)</option>
+                    <option value="price-asc">Price (Low to High)</option>
+                    <option value="price-desc">Price (High to Low)</option>
+                  </select>   
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
 	<div class="ps-section--features-product ps-section masonry-root pt-100 pb-100">
        <div class="ps-container">
           <div class="ps-section__header mb-50">
@@ -90,6 +102,7 @@
       </div>
 
     <!-- banner bottom -->
+    
       <div class="ps-section--offer">
         <div class="ps-column"><a class="ps-offer" href="product-listing.html">
           <img src="{{url('public')}}/home/images/banner/home-banner-1.png" alt=""></a></div>

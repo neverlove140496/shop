@@ -32,22 +32,13 @@
                         <input type="text" class="form-control" name="address" placeholder="Address">
                       </div>
 
-                      <div class="form-group">
-                        <label for="">Phone</label>
-                          <input type="text" class="form-control" name="phone" placeholder="Phone">
-                      </div>                    
+                                   
                       <div class="form-group">
                           
                             <label>Order Notes</label>
                             <textarea class="form-control" rows="3" name="note" placeholder="Ghi chú thêm về đặt hàng.."></textarea>     
                       </div> 
-                                          
-                      <div class="form-group">   
-                           <a href="{{route('dangky')}}">Register & Login</a>
-                      </div>
-                     
-                  
-                 
+
                     </div>
                   </div>
 
@@ -75,8 +66,9 @@
                           <tr>
                               <td>
                                 <select name="ship" class="form-control" required="required">
-                                  <option value="0">Shipper</option>
-                                  <option value="1">Chuyển phát nhanh</option>
+                                  <option value="shipper">Shipper</option>
+                                  <option value="express delivery">Chuyển phát nhanh</option>
+                                  <option value="post office">Bưu điện</option>
                                 </select>
                               </td>
                               <td>0 vnđ</td>

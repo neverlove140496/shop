@@ -15,11 +15,7 @@
                     </div>
                     <div class="ps-post__content">
                       <p>{!!$bg->description!!}</p>
-                      <blockquote>
-                        <p>It seems from the moment you begin to take your love of astronomy seriously, the thing that is on your mind is what kind of telescope will you get. And there is no question, investing in a good telescope can really enhance your enjoyment of your new passion in astronomy.</p>
-                        <p class="author">Rodney <br> <span>Cannon</span></p>
-                      </blockquote>
-                      <p>In the history of modern astronomy, there is probably no one greater leap forward than the building and launch of the space   telescope known as the Hubble. While NASA has had many ups and downs, the launch and continued operation of the Hubble space telescope probably ranks next to the moon landings ace exploration accomplishments of the last hundred years.</p>
+                     
                     </div>
                     <div class="ps-post__footer">
                       <p class="ps-post__tags"><i class="fa fa-tags"></i><a href="blog-list.html">Man shoe</a>,<a href="blog-list.html"> Woman</a>,<a href="blog-list.html"> Nike</a></p>
@@ -45,7 +41,7 @@
                     </div>
                   </div>
                   <div class="ps-comments">
-                    <h3>Comment(4)</h3>
+                    <h3>Comment</h3>
                     <div class="ps-comment">
                       <div class="ps-comment__thumbnail"><img src="{{url('public')}}/home/images/user/2.jpg" alt=""></div>
                       <div class="ps-comment__content">
@@ -55,58 +51,27 @@
                         <p>The development of the mass spectrometer allowed the mass of atoms to be measured with increased accuracy. The device uses the launch and continued operation of the Hubble space telescope probably.</p>
                       </div>
                     </div>
-                    <div class="ps-comment ps-comment--reply">
-                      <div class="ps-comment__thumbnail"><img src="{{url('public')}}/home/images/user/3.jpg" alt=""></div>
-                      <div class="ps-comment__content">
-                        <header>
-                          <h4>MARK GREY <span>(3 hours ago)</span></h4><a href="#">Reply<i class="ps-icon-arrow-left"></i></a>
-                        </header>
-                        <p>The development of the mass spectrometer allowed the mass of atoms to be measured with increased accuracy. The device uses  continue ace explore.</p>
-                      </div>
-                    </div>
-                    <div class="ps-comment">
-                      <div class="ps-comment__thumbnail"><img src="{{url('public')}}/home/images/user/4.jpg" alt=""></div>
-                      <div class="ps-comment__content">
-                        <header>
-                          <h4>MARK GREY <span>(1 day ago)</span></h4><a href="#">Reply<i class="ps-icon-arrow-left"></i></a>
-                        </header>
-                        <p>The development of the mass spectrometer allowed the mass of atoms to be measured with increased accuracy. The device uses the launch and continued operation of the Hubble space telescope probably.</p>
-                      </div>
-                    </div>
+                   
+                    
                   </div>
-                  <form class="ps-form--comment" action="http://nouthemes.com/html/trueshoes/do_action" method="post">
-                    <h3>LEAVE A COMMENT</h3>
+                @if(Auth::check())
+                  <form class="ps-form--comment" action="{{route('comment/{id}')}}" method="post">
+                    {{ csrf_field()}}
+                    <h3> COMMENTS</h3>
                     <div class="row">
-                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-                            <div class="form-group">
-                              <input class="form-control" type="text" placeholder="Your Name">
-                            </div>
+          
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                          <div class="form-group">
+                            <textarea class="form-control" rows="6" name="content" placeholder="Nhập nội dung bình luận..."></textarea>
                           </div>
-                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-                            <div class="form-group">
-                              <input class="form-control" type="email" placeholder="E-mail">
-                            </div>
-                          </div>
-                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-                            <div class="form-group">
-                              <input class="form-control" type="text" placeholder="Subject">
-                            </div>
-                          </div>
-                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-                            <div class="form-group">
-                              <input class="form-control" type="text" placeholder="Phone Number">
-                            </div>
-                          </div>
-                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                            <div class="form-group">
-                              <textarea class="form-control" rows="6" placeholder="Text your message here..."></textarea>
-                            </div>
-                          </div>
+                        </div>
+
                     </div>
                     <div class="form-group">
                       <button class="ps-btn ps-btn--sm ps-contact__submit">Send Message<i class="ps-icon-next"></i></button>
                     </div>
                   </form>
+                @endif
                 </div>
               @endforeach
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
@@ -203,24 +168,6 @@
           </div>
         </div>
       </div>
-      <div class="ps-subscribe">
-        <div class="ps-container">
-          <div class="row">
-                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 ">
-                  <h3><i class="fa fa-envelope"></i>Sign up to Newsletter</h3>
-                </div>
-                <div class="col-lg-5 col-md-7 col-sm-12 col-xs-12 ">
-                  <form class="ps-subscribe__form" action="http://nouthemes.com/html/trueshoes/do_action" method="post">
-                    <input class="form-control" type="text" placeholder="">
-                    <button>Sign up now</button>
-                  </form>
-                </div>
-                <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 ">
-                  <p>...and receive  <span>$20</span>  coupon for first shopping.</p>
-                </div>
-          </div>
-        </div>
-      </div>
-     
+         
     </main>
 @stop()

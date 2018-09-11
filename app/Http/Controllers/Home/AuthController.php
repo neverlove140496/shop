@@ -27,7 +27,7 @@
 				'name.max' => 'Họ và tên nhiều nhất 150 ký tự!',
 				'email.required' => 'Email không được để trống!',
 				'email.email' => 'Email không đúng định dạng!',
-				'email.email' => 'Email đã tồn tại!',
+				'email.unique' => 'Email đã tồn tại!',
 				'password.required' => 'Mật khẩu không được để trống!',
 				'password.min' => 'Mật khẩu ít nhất 6 ký tự!',
 				'password.max' => 'Mật khẩu nhiều nhất 150 ký tự!',
@@ -85,48 +85,45 @@
 			}
 		}
 
-
 		public function get_dangxuat()
 		{
 			Auth::logout();
 			return redirect()->route('home');
 		}
 
-		//thay doi mạt khẩu
+		
 		public function get_change()
 		{
-			return view('home.profile');
+			return view('auth.change-pass');
 		}
-
 		public function post_change(Request $req)
 		{
-			// $this->validate($req,
-			// [
-			// 	'password' => 'required',
-			// 	'new_password' => 'required|min:6',
-			// 	're_new_password' => 'required|same:new_password'
-			// ],
-			// [
-			// 	'required' => ':attribute không được bỏ trống!',
-			// 	'min' => ':attribute ít nhất :min ký tự!',
-			// 	'same' => ':attribute phải trùng :other!',
-			// ]);
+			$this->validate($req,
+			[
+				'old_password' => 'required|OldPassword',
+				'password' => 'required|min:6|max:150|unique:users,password',		
+				'comfirm_password' => 'required|same:password'
+			],
+			[
+			
+				'old_password.required' => 'Mật khẩu không được để trống!',
+				'old_password' => ':attribute không trùng khớp!',
+				'unique' => ':attribute là mật khẩu cũ!',
+				'password.required' => 'Mật khẩu không được để trống!',
+				'password.min' => 'Mật khẩu ít nhất 6 ký tự!',
+				'password.max' => 'Mật khẩu nhiều nhất 150 ký tự!',
+				'cofirm_password.required' => 'Mật khẩu nhập lại không được để trống!',
+				'comfirm_password.same' => 'Mật khẩu chưa trùng khớp!'
 
-			dd($req->all());
+			]);
 
-			$password->Auth::user()->password;
-			if(Hash::check($req->password,$password))
-			{
-				$pass=bcrypt($req->new_password);
+			// dd($req->all());
 
-				$req->merge(['password'=>$pass]);
-				User::where('id',Auth::user()->id->update($req->only('password')));
+			Auth::user()->update([
+				'password' => bcrypt($req->password)
+			]);
 
-				return redirect()->route('thaydoi')->with('success','Cập nhật thành công!');
-			}else{
-				return redirect()->back()->with('error','Cập nhật thất bại!');
-			}
+			return redirect()->route('home');
 		}
-
 	}
 ?>

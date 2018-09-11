@@ -147,6 +147,8 @@
 				@foreach($sizes as $si)
 				<?php 
 					$checked = in_array($si->id,$att_array) ? 'checked' : '';
+					
+
 				 ?>
 					<div class="checkbox">
 							<label>
@@ -166,7 +168,7 @@
 				 ?>
 					<div class="checkbox" >
 							<label>
-								<input   name="maze[]" type="checkbox" value="{{ $ma->id}}"  {{$checked}}>
+								<input   name="material[]" type="checkbox" value="{{ $ma->id}}"  {{$checked}}>
 								{{ $ma->name}}
 							</label>
 					</div>
@@ -189,9 +191,15 @@
 		</div>
 		@endif
 		
-		<button type="submit" class="btn btn-success">Cập nhật</button>
+		<button type="submit" class="btn btn-success">
+		<?php 
+			if(isset($att_array[]))
+			{
+				
+			}
+		 ?>
+		Cập nhật</button>
 	</form>
-	
 		</div>
 	</div>
 @stop()

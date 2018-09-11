@@ -22,13 +22,12 @@
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             <p>{!! Session::get('error') !!}</p>
                         </div>
-                    @endif  
+                    @endif 
+                  <div class="col-md-6 col-md-offset-3"> 
                     <form action="" method="POST" role="form">
-
-                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">Full Name</label>
-                        <input type="text" class="form-control" name="name" placeholder="Full name"
+                        <input type="text" class="form-control" name="name" placeholder="Họ và tên"
                         value="{{Auth::user()->name}}" 
                         >
                       </div>
@@ -39,7 +38,7 @@
                     @endif
                       <div class="form-group" >
                         <label for="">Email</label>
-                        <input type="email" class="form-control" name="email" placeholder="Address email"
+                        <input type="email" class="form-control" name="email" placeholder="Địa chỉ email"
                         value="{{Auth::user()->email}}" 
                         >
                       </div>
@@ -48,32 +47,10 @@
                             {{ $errors->first('email')}}
                         </div>
                     @endif
-                      <div class="form-group" >
-                        <label for="">Password</label>
-                        <input type="text" class="form-control" name="password" placeholder="password">
-                      </div>
-                         @if($errors->has('password'))
-                        <div class="help-block">
-                            {{ $errors->first('password')}}
-                        </div>
-                    @endif
-                     <div class="form-group" >
-                        <label for="">Cofirm password</label>
-                        <input type="text" class="form-control" name="comfirm_password" placeholder="comfirm_password">
-                      </div>
-                         @if($errors->has('comfirm_password'))
-                        <div class="help-block">
-                            {{ $errors->first('comfirm_password')}}
-                        </div>
-                    @endif
-                      
 
-                  </div>
-
-                  <div class="col-md-6">
                       <div class="form-group">
                         <label for="">Address</label>
-                        <input type="text" class="form-control" name="address" placeholder=" address"
+                        <input type="text" class="form-control" name="address" placeholder="Địa chỉ"
                         
                         >
                       </div>
@@ -85,7 +62,7 @@
 
                     <div class="form-group" >
                         <label for="">Phone</label>
-                        <input type="text" class="form-control" name="phone" placeholder="Phone">
+                        <input type="text" class="form-control" name="phone" placeholder="Số điện thoại">
                       </div>
                          @if($errors->has('phone'))
                         <div class="help-block">
@@ -94,9 +71,13 @@
                     @endif
                       <div class="form-group" >
                         <label for="">Gender</label>
-                        <input type="email" class="form-control" name="gender" placeholder="Gender"
                         
-                        >
+                        <select name="gender" id="input" class="form-control" required="required">
+                          <option value="">Chọn giới tính</option>
+                          <option value="men">Nam</option>
+                          <option value="women">Nữ</option>
+                          <option value="other">Khác</option>
+                        </select>
                       </div>
                       @if($errors->has('gender'))
                         <div class="help-block">
@@ -106,7 +87,7 @@
 
                       <div class="form-group" >
                         <label for="">Birthday</label>
-                        <input type="text" class="form-control" name="birthday" placeholder="Birthday">
+                        <input type="date" class="form-control" name="birthday" placeholder="Birthday">
                       </div>
                          @if($errors->has('birthday'))
                         <div class="help-block">
@@ -116,8 +97,6 @@
 
                   </div>
                   {{ csrf_field()}}
-                  
-
                   <button type="submit" class="ps-btn ps-btn--fullwidth" style="width: 160px; height: 50px; margin-left: 43%;">Cập nhật</button>
                     
                 </form>                                   

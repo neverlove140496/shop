@@ -20,8 +20,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | SMTP Host Address
-    |--------------------------------------------------------------------------
+    | SMTP Host Address -----------------------------------------
     |
     | Here you may provide the host address of the SMTP server used by your
     | applications. A default option is provided that is compatible with
@@ -29,7 +28,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.mail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +41,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 587),  
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +55,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'zyzz140496zyzz@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'MadShop'),
     ],
 
     /*
@@ -84,9 +83,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => env('MAIL_USERNAME','zyzz140496zyzz@gmail.com'),
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => env('MAIL_PASSWORD','Huuhoan..'),
 
     /*
     |--------------------------------------------------------------------------

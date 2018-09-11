@@ -34,45 +34,70 @@
 		<thead>
 			<tr>
 				<th>Stt</th>
-				<th>Mã đơn hàng</th>
-				<th>Mã khách hàng</th>
-				<th>Tên khách hàng</th>
-				<th>Ngày đặt</th>	
+				<th>Tên khách hàng</th>	
+				<th>Thanh toán</th>	
+				<th>Giao hàng</th>	
+				<th>Ghi chú</th>
+				<th>Địa điểm</th>
+				<th>Tổng tiền</th>
+				<th>Ngày đặt</th>
+				<th>Chi tiết</th>
 				<th>Trạng thái</th>
 				<th>Hành động</th>
 			</tr>
 		</thead>
 		<tbody>
-
-	<!-- 	@foreach($orders->Detail2 as $key =>$dh)	
-		
-				<tr>
-				<td>{{ $key++ }}</td>
-				<td>12321</td>
-				<td>323</td>
-				<td>{{ $dh->name }}</td>
-				<td>{{ date('h:m d/m/Y',strtotime($dh->created_at)) }}</td>
-			
-
-				<td>
+			@foreach($donhang as $k =>$dh)  
+                  <tr>
+                    <td>
+                      {{$k+1}}
+                    </td>
+                    <td>
+                      {{$dh->User1->name}}
+                    </td>
+                     <td>
+                      {{$dh->payment}}
+                    </td>
+                     <td>
+                      {{$dh->ship}}
+                    </td>
+                    <td>
+                      {{$dh->note}}
+                    </td>
+                    <td>
+                      {{$dh->address}}
+                    </td>
+                   <td>
+                        {{number_format($dh->total_amount())}} vnđ
+                    </td>
+                   
+                     <td> {{date('d/m/Y',strtotime($dh->created_at))}}</td>
+                    
+                     <td>
                      @if($dh->status==1)
-                          <span class="label  label-success">Đã xử lý</span>
+                          <span class=" label label-warning"> Pending</span>
                       @else
-                          <span class=" label label-primary">Chờ xử lý</span>
+                          <span class=" label label-success"> Approval</span>
                       @endif
-                    </td> -->
-				
-				<td>
-					<a href="{{ route('update-donhang',['id'=>$dh->id])}}" class="label label-md label-info">Xem</a>
-					<a href="{{ route('delete-donhang',['id'=>$dh->id])}}" class="label label-md label-danger" onclick="return confirm('Bạn chắc chắn chứ?')">Hủy</a>
-				</td>
-			</tr>	
-		
-		@endforeach
+                    </td>
+                    <td>
+                     <a class=" label label-primary" href="{{route('donhang_detail',['id'=>$dh->id])}}">Show</a>
+                                                           
+                    </td>
+                    <td>
+                    <a href="" class=" label label-success">Xuất HĐ</a>
+					
+					<a href="{{ route('delete-donhang',['id'=>$dh->id])}}" class="label label-danger" onclick="return confirm('Bạn chắc chắn chứ?')">Hủy </a>
+                    </td>
+                  </tr>
+                @endforeach
 		</tbody>
-	</table>
+	</table>		
 	
-			{{ $don_hang->links() }}
 	</div>
+	
 </div>
+
+
+
 @stop()

@@ -56,7 +56,7 @@
                           <ul class="dropdown-menu">
                             <li><a href="{{route('profile')}}">Profile</a></li>
                             <li><a href="{{route('order_history')}}">History</a></li>
-                            
+                            <li><a href="{{route('change-password')}}">Change password</a></li>
                             <li><a href="{{route('dangxuat')}}">Logout</a></li>
                            
                           </ul>
@@ -118,9 +118,7 @@
               <input class="form-control" type="text" name="search" id="search" placeholder="Search Product…">
               <button><i class="ps-icon-search"></i></button>
             </form>
-
-
-            <div class="ps-cart"><a class="ps-cart__toggle" href="{{route('view-cart')}}"><span><i>{{($cart->total_quantity)}}</i></span><i class="ps-icon-shopping-cart"></i></a>
+    <div class="ps-cart"><a class="ps-cart__toggle" href="{{route('view-cart')}}"><span><i>{{($cart->total_quantity)}}</i></span><i class="ps-icon-shopping-cart"></i></a>
               <div class="ps-cart__listing">
                 <div class="ps-cart__content">
 
@@ -149,11 +147,14 @@
 
               </div>
             </div>
+
+         
             <div class="menu-toggle"><span></span></div>
           </div>
         </div>
       </nav>
     </header>
+    
     <div class="header-services">
       <div class="ps-services owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="7000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="false" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="1000" data-owl-mousedrag="on">
         <p class="ps-service"><i class="ps-icon-delivery"></i><strong>Giao hàng miễn phí</strong> : Giao hàng miễn phí trên toàn quốc</p>
@@ -162,9 +163,10 @@
         
       </div>
     </div>
+
     <main class="ps-main">
 
-     
+     @if(request()->is('/'))
       <div id="slide" class="carousel slide" data-ride="carousel" >
         <ol class="carousel-indicators">
           <li data-target="#slide" data-slide-to="0" class=""></li>
@@ -202,7 +204,7 @@
         <a class="left carousel-control" href="#slide" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
         <a class="right carousel-control" href="#slide" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
       </div>
-
+    @endif
       <!-- Main-->
       @yield('main')  
   <div class="ps-subscribe">

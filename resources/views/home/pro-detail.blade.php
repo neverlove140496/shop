@@ -84,7 +84,7 @@
                   <select class="ps-select selectpicker">
                     <option value="1">Select Size</option>
                   @foreach($sizes as $sis)
-                    <option value="">{{$sis->value}}</option>
+                    <option value="{{$sis->id}}">{{$sis->value}}</option>
                   @endforeach  
                   </select>
                   
@@ -96,69 +96,56 @@
               <div class="clearfix"></div>
               <div class="ps-product__content mt-50">
                 <ul class="tab-list" role="tablist">
-                  <li class="active"><a href="#tab_01" aria-controls="tab_01" role="tab" data-toggle="tab">Overview</a></li>
-                  <li><a href="#tab_02" aria-controls="tab_02" role="tab" data-toggle="tab">Review</a></li>
+                  <li class="active"><a href="#tab_01" aria-controls="tab_01" role="tab" data-toggle="tab">Description</a></li>
+
+                  @if(Auth::check())
+                    <li><a href="#tab_02" aria-controls="tab_02" role="tab" data-toggle="tab">Review</a></li>
+                  @endif
                   <li><a href="#tab_03" aria-controls="tab_03" role="tab" data-toggle="tab">PRODUCT TAG</a></li>
-                  <li><a href="#tab_04" aria-controls="tab_04" role="tab" data-toggle="tab">ADDITIONAL</a></li>
                 </ul>
               </div>
               <div class="tab-content mb-60">
                 <div class="tab-pane active" role="tabpanel" id="tab_01">
-                  {!!$product->content!!}
+                  {!!$product->description!!}
                 </div>
-                <div class="tab-pane" role="tabpanel" id="tab_02">
-                  <!-- <p class="mb-20">1 review for <strong>Shoes Air Jordan</strong></p> -->
-                  <!-- <div class="ps-review">
-                    <div class="ps-review__thumbnail"><img src="{{url('public')}}/home/images/user/1.jpg" alt=""></div>
-                    <div class="ps-review__content">
-                      <header>
-                        <select class="ps-rating">
-                          <option value="1">1</option>
-                          <option value="1">2</option>
-                          <option value="1">3</option>
-                          <option value="1">4</option>
-                          <option value="5">5</option>
-                        </select>
-                        <p>By<a href="#"> Alena Studio</a> - November 25, 2017</p>
-                      </header>
-                      <p>Soufflé danish gummi bears tart. Pie wafer icing. Gummies jelly beans powder. Chocolate bar pudding macaroon candy canes chocolate apple pie chocolate cake. Sweet caramels sesame snaps halvah bear claw wafer. Sweet roll soufflé muffin topping muffin brownie. Tart bear claw cake tiramisu chocolate bar gummies dragée lemon drops brownie.</p>
-                    </div>
-                  </div> -->
-                  <form class="ps-product__review" action="">
-                    <h4>ADD YOUR REVIEW</h4>
-                    <div class="row">
-                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-                            <div class="form-group">
-                              <label>Name:<span>*</span></label>
-                              <input class="form-control" type="text" placeholder="">
+                @if(Auth::check())
+                  <div class="tab-pane" role="tabpanel" id="tab_02">
+                    <form class="ps-product__review" action="">
+                      <h4>ADD YOUR REVIEW</h4>
+                      <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                              <div class="form-group">
+                                <label>Name:<span>*</span></label>
+                                <input class="form-control" type="text" placeholder="">
+                              </div>
+                              <div class="form-group">
+                                <label>Email:<span>*</span></label>
+                                <input class="form-control" type="email" placeholder="">
+                              </div>
+                              <div class="form-group">
+                                <label>Your rating<span></span></label>
+                                <select class="ps-rating">
+                                  <option value="1">1</option>
+                                  <option value="1">2</option>
+                                  <option value="1">3</option>
+                                  <option value="1">4</option>
+                                  <option value="5">5</option>
+                                </select>
+                              </div>
                             </div>
-                            <div class="form-group">
-                              <label>Email:<span>*</span></label>
-                              <input class="form-control" type="email" placeholder="">
+                            <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 ">
+                              <div class="form-group">
+                                <label>Your Review:</label>
+                                <textarea class="form-control" rows="6"></textarea>
+                              </div>
+                              <div class="form-group">
+                                <button class="ps-btn ps-btn--sm">Submit<i class="ps-icon-next"></i></button>
+                              </div>
                             </div>
-                            <div class="form-group">
-                              <label>Your rating<span></span></label>
-                              <select class="ps-rating">
-                                <option value="1">1</option>
-                                <option value="1">2</option>
-                                <option value="1">3</option>
-                                <option value="1">4</option>
-                                <option value="5">5</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 ">
-                            <div class="form-group">
-                              <label>Your Review:</label>
-                              <textarea class="form-control" rows="6"></textarea>
-                            </div>
-                            <div class="form-group">
-                              <button class="ps-btn ps-btn--sm">Submit<i class="ps-icon-next"></i></button>
-                            </div>
-                          </div>
-                    </div>
-                  </form>
-                </div>
+                      </div>
+                    </form>
+                  </div>
+                @endif
                 <div class="tab-pane" role="tabpanel" id="tab_03">
                   <p>Add your tag <span> *</span></p>
                   <form class="ps-product__tags" action="" method="post">

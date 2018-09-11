@@ -25,14 +25,14 @@
                                         <div class="alert alert-danger">
                                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                             
-                                            <p style="color:black;">{!! Session::get('error')!!}</p>
+                                            <p>{!! Session::get('error')!!}</p>
                                         </div>
                                         @endif
                             </div>
-                        <h3>Login</h3>
+                        <h3>Register</h3>
                         
                         <div class="page-links">
-                            <a href="{{route('dangnhap')}}" class="active">Login</a><a href="{{route('dangky')}}" >Register</a>
+                            <a href="{{route('dangnhap')}} "  class="active">Login</a><a href="{{route('dangky')}}">Register</a>
                         </div>
                         <form action="" method="POST" role="form">
                              {{ csrf_field()}}
@@ -45,13 +45,15 @@
                                @if($errors->has('password'))
                             <p>{{$errors->first('password')}}</p>
                             @endif
+                            
+
                             <div class="form-button">
                                 <button id="submit" type="submit" class="ibtn">Login</button>
                             </div>
                             
                         </form>
                         <div class="other-links">
-                         <span><a href="{{route('home')}}">Home</a></a></span><a href="#">Facebook</a><a href="#">Google</a>
+                            <span><a href="{{route('home')}}">Home</a></a></span><a href="#">Facebook</a><a href="#">Google</a>
                         </div>
                     </div>
                 </div>

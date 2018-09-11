@@ -19,7 +19,8 @@
 		}
 
 		public function post_register(Request $req)
-		{	$this->validate($req,
+		{	
+			$this->validate($req,
 			[
 				'name' => 'required|min:6|max:150',
 				'email' => 'required|email|unique:users,email',
@@ -32,7 +33,7 @@
 				'name.max' => 'Họ và tên nhiều nhất 150 ký tự!',
 				'email.required' => 'Email không được để trống!',
 				'email.email' => 'Email không đúng định dạng!',
-				'email.email' => 'Email đã tồn tại!',
+				'email.unique' => 'Email đã tồn tại!',
 				'password.required' => 'Mật khẩu không được để trống!',
 				'password.min' => 'Mật khẩu ít nhất 6 ký tự!',
 				'password.max' => 'Mật khẩu nhiều nhất 150 ký tự!',
@@ -40,9 +41,15 @@
 				'comfirm_password.same' => 'Mật khẩu chưa trùng khớp!'
 
 			]);
+
+			//dd($req->all());
 				$pass=bcrypt($req->password);
 				$req->offsetUnset('password');
 				$req->merge(['password' => $pass]);
+
+			//phân quyền
+				$req->offsetUnset('level');
+				$req->merge(['level' => 'admin']);
 
 			if(User::create($req->all()))
 			{

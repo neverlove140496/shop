@@ -20,7 +20,7 @@
 			<form action=""  class="form-inline" role="form">
 				<div class="form-group">
 					
-			<a href="{{ route('add-user')}}" class="btn btn-sm btn-primary">Thêm mới</a>
+				<a href="{{ route('add-user')}}" class="btn btn-sm btn-primary">Thêm mới</a>
 					<input class="form-control" name="search" placeholder="Tên tài khoản..." style="width:140px; height: 31px" >
 				</div>
 				<button type="submit" class="btn btn-sm btn-info">Lọc</button>

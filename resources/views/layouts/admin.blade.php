@@ -76,7 +76,7 @@
                          </li> 
 
                             <li>
-                         <a href=""><i class="fa fa-edit"></i>Quản lý Đơn hàng</a>
+                         <a href="{{route('donhang')}}"><i class="fa fa-edit"></i>Quản lý Đơn hàng</a>
                                 
                             </li>
 

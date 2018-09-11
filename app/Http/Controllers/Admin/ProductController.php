@@ -189,7 +189,6 @@
 				'description.required' => ':attribute không được để trống!',
 			]);
 
-			
 			$sanpham=Product::find($id);
 			$img=$sanpham->image;
 			if($req->hasFile('upload_file'))
@@ -211,8 +210,7 @@
 						$old_name=$old->getClientOriginalName();
 						
 						ProImage::where('id',$img_id)->update([
-							'links' => $old_name
-							
+							'links' => $old_name				
 					]);
 					}
 				}
@@ -229,9 +227,8 @@
 				// }
 
 			}
-			
+		
 			return redirect()->route('product')->with('success','Cập nhật sản phẩm thành công!');
-
 		}
 
 		public function del_img($id)
